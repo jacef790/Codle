@@ -29,7 +29,7 @@ function App() {
   return (
     <div>
 
-      <Keyboard /> Keyboard
+      <Keyboard buttonCallback={keyboardButtonPressed} /> Keyboard
     </div>
   );
 }
