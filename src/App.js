@@ -1,4 +1,4 @@
-import Keyboard from './components/Keyboard';
+import Keyboard from './components/Keyboard'
 import './App.css';
 
 function App() {
