@@ -21,4 +21,4 @@ const LetterBox = ({ letterArray, typedLetter, isSubmitted, boxIndex }) => {
 
 };
 
-export default rowForGuessing
+export default LetterBox

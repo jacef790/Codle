@@ -3,7 +3,7 @@ import React from 'react';
 //word is the string pulled straight from the database
 //typedLetters is array
 //isSubmitted is boolean
-const rowForGuessing = ({ word, typedLetters, isSubmitted }) => {
+const RowForGuessing = ({ word, typedLetters, isSubmitted }) => {
     let upperWord = word.toUpperCase();
 
     let letterArray = upperWord.split('');
@@ -23,4 +23,4 @@ const rowForGuessing = ({ word, typedLetters, isSubmitted }) => {
 
 };
 
-export default rowForGuessing
+export default RowForGuessing
