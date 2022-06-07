@@ -6,18 +6,22 @@ function App() {
   let word = 'string'//TODO: get word, store string value as "word" or something
 
   //reset after submitting, only as long as the word
-  typedLetterArray = [];
+  let typedLetterArray = [];
 
   //"0" is 1 row, I'd like to use this number for array index
-  rowNumber = 0;
+  let rowNumber = 0;
 
-  keyboardButtonPressed = (buttonValue) => {
+  const keyboardButtonPressed = (buttonValue) => {
+
+    console.log(buttonValue);
+
     if (buttonValue === 'Delete') {
       typedLetterArray.pop();
       //update row by rowNumber
     } else if (buttonValue === 'Enter' && typedLetterArray.length === word.length) {
       rowNumber++;
       //add row to be rendered
+      //change last row to "isSubmitted" true
     } else if (typedLetterArray.length === word.length) {
       return;
     } else {
