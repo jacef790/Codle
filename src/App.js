@@ -1,7 +1,10 @@
 import Keyboard from './components/Keyboard'
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+
+  const [typedLetterState, setTypedLetterState] = useState('')
 
   let word = 'string'//TODO: get word, store string value as "word" or something
 
@@ -13,7 +16,7 @@ function App() {
 
   const keyboardButtonPressed = (buttonValue) => {
 
-    console.log(buttonValue);
+    console.log(buttonValue)
 
     if (buttonValue === 'Delete') {
       typedLetterArray.pop();

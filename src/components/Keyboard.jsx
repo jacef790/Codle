@@ -10,7 +10,10 @@ const keyboard = (props) => {
           <div key={rowIndex} className="flex justify-center my-2 space-x-1 m-auto w-[65%]">
             {keyboardRow.map((key) => {
               return (
-                <button className="rounded bg-blue-600 font-bold uppercase text-xl md:text-3xl text-slate-300 py-2 flex-1" oncCick={props.buttonCallback(this.value)}>
+                <button
+                  className="rounded bg-blue-600 font-bold uppercase text-xl md:text-3xl text-slate-300 py-2 flex-1"
+                  onClick={() => props.buttonCallback(key)}
+                >
                   {key}
                 </button>
               );
