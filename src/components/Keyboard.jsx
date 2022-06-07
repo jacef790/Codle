@@ -1,29 +1,37 @@
-import React from 'react'
+import React from "react";
+
 
 const keyboard = () => {
   return (
-    <div>
-        {keyboardKeys.map((keyboardRow) => {
-            return (
-                <div>
-                    {keyboardRow.map((key) => {
-                        return <button>{key}</button>;
-                    })}
-                    </div>
-            )
-            
-        })}
+    <div className="flex flex-col">
+      {keyboardKeys.map((keyboardRow, rowIndex) => {
+        return (
+          <div key={rowIndex} className="flex justify-center my-2 space-x-1 m-auto w-[65%]">
+            {keyboardRow.map((key) => {
+              return (
+                <button className="rounded bg-blue-600 font-bold uppercase text-xl md:text-3xl text-slate-300 py-2 flex-1">
+                  {key}
+                </button>
+              );
+            })}
+          </div>
+        );
+      })}
     </div>
-  )
-}
+  );
+};
 
 
 
 const keyboardKeys = [
     ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
     ['', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ''],
-    ['Enter', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Backspace'],
+    ['Enter', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Delete'],
   ];
 
 
-export default keyboard
+
+
+
+
+export default keyboard;
