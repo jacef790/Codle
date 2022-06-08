@@ -53,7 +53,7 @@ function App() {
 
       <RowForGuessing word={word} typedLetters={typedLetterArray} isSubmitted={false} />
 
-      <Keyboard buttonCallback={keyboardButtonPressed} /> Keyboard
+      <Keyboard buttonCallback={keyboardButtonPressed} /> 
     </div>
   );
 }
