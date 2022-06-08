@@ -8,6 +8,8 @@ function App() {
 
   const [word, setWord] = useState('string');//TODO: get word, store string value as "word" or something
 
+  const [gameWin, setGameWin] = useState([false]);
+
   const [typedLetterArray, setTypedLetterArray] = useState([]);
 
   const [submittedRowArray, setSubmittedRowArray] = useState([]);
@@ -21,6 +23,9 @@ function App() {
       setTypedLetterArray(typedLetterArray.slice(0, -1));
 
     } else if (buttonValue === 'Enter' && typedLetterArray.length === word.length) {
+      if (typedLetterArray.join('') === word) {
+        setGameWin(true);
+      }
       setSubmittedRowArray(submittedRowArray.concat(typedLetterArray.join('')));
       setTypedLetterArray([]);
 
@@ -50,9 +55,22 @@ function App() {
           <div></div>
         )}
 
-      <RowForGuessing word={word} typedLetters={typedLetterArray} isSubmitted={false} />
 
-      <Keyboard buttonCallback={keyboardButtonPressed} /> Keyboard
+
+      {!gameWin ? (
+        <div>
+          <RowForGuessing word={word} typedLetters={typedLetterArray} isSubmitted={false} />
+
+          <Keyboard buttonCallback={keyboardButtonPressed} /> <p>Keyboard</p>
+        </div>
+      ) : (
+        <div>
+          <Highscore />
+
+          <Comments />
+        </div>
+      )
+      }
     </div>
   );
 }
