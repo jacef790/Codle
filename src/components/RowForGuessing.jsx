@@ -1,9 +1,10 @@
 import React from 'react';
+import LetterBox from './LetterBox';
 
 //word is the string pulled straight from the database
 //typedLetters is array
 //isSubmitted is boolean
-const rowForGuessing = ({ word, typedLetters, isSubmitted }) => {
+const RowForGuessing = ({ word, typedLetters, isSubmitted }) => {
     let upperWord = word.toUpperCase();
 
     let letterArray = upperWord.split('');
@@ -12,7 +13,7 @@ const rowForGuessing = ({ word, typedLetters, isSubmitted }) => {
         <div>
             {letterArray.map((el, i) => {
                 return (
-                    <div>
+                    <div className="flex flex-col">
                         <LetterBox letterArray={letterArray} typedLetter={typedLetters[i]} isSubmitted={isSubmitted} boxIndex={i} />
                     </div>
                 )
@@ -23,4 +24,4 @@ const rowForGuessing = ({ word, typedLetters, isSubmitted }) => {
 
 };
 
-export default rowForGuessing
+export default RowForGuessing
