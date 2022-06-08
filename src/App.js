@@ -1,4 +1,5 @@
 import Keyboard from './components/Keyboard'
+import Highscore from './components/Highscore'
 import RowForGuessing from './components/RowForGuessing'
 import './App.css';
 import { useState } from 'react';
@@ -65,9 +66,10 @@ function App() {
         </div>
       ) : (
         <div>
-          <Highscore />
+          {/* these props should be word object, not the word string used for the rest of the game */}
+          <Highscore word={word} />
 
-          <Comments />
+          <Comments word={word} />
         </div>
       )
       }
