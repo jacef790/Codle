@@ -2,11 +2,14 @@ import Keyboard from './components/Keyboard'
 import RowForGuessing from './components/RowForGuessing'
 import './App.css';
 import { useState } from 'react';
+import { typeDefs, resolvers } from '../server/schemas/index'
 
 
 function App() {
 
   const [word, setWord] = useState('string');//TODO: get word, store string value as "word" or something
+
+  console.log(resolvers.word);
 
   const [typedLetterArray, setTypedLetterArray] = useState([]);
 
