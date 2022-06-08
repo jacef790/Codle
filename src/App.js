@@ -1,5 +1,6 @@
 import Keyboard from './components/Keyboard'
 import RowForGuessing from './components/RowForGuessing'
+import Nav from './components/Nav';
 import './App.css';
 import { useState } from 'react';
 
@@ -38,8 +39,8 @@ function App() {
 
 
   return (
-    <div className='text-white'>
-
+    <div className='text-white bg-gradient-to-tl from-black to-gray-500 h-screen'>
+      <Nav />
 
       {submittedRowArray.length > 0 ? (
         submittedRowArray.map(
@@ -54,7 +55,7 @@ function App() {
 
       <RowForGuessing word={word} typedLetters={typedLetterArray} isSubmitted={false} />
 
-      <Keyboard buttonCallback={keyboardButtonPressed} /> Keyboard
+      <Keyboard buttonCallback={keyboardButtonPressed} /> 
     </div>
   );
 }
