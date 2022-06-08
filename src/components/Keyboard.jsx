@@ -11,7 +11,7 @@ const keyboard = (props) => {
             {keyboardRow.map((key) => {
               return (
                 <button
-                  className="rounded bg-blue-600 font-bold uppercase text-xl md:text-3xl text-slate-300 py-2 flex-1"
+                  className="rounded bg-gray-600 font-bold uppercase text-xl md:text-3xl text-slate-300 py-2 flex-1"
                   onClick={() => props.buttonCallback(key)}
                 >
                   {key}
@@ -29,7 +29,7 @@ const keyboard = (props) => {
 
 const keyboardKeys = [
   ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
-  ['', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ''],
+  ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
   ['Enter', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Delete'],
 ];
 
