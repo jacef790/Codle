@@ -14,10 +14,10 @@ const typeDefs = gql`
     }
 
     type Word {
-      charcters: String
-      highScore: Int
-      highScoreName: String
-      comments: [Comment]!
+        charcters: String
+        highScore: Int
+        highScoreName: String
+        comments: [Comment]!
     }
 
     type Query {
@@ -35,4 +35,4 @@ const typeDefs = gql`
     }
 `;
 
-module.exports = typeDefs;
+module.exports = typeDefs;mach2258

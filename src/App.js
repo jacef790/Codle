@@ -5,6 +5,8 @@ import './App.css';
 import { useState } from 'react';
 
 
+
+
 function App() {
 
   const [word, setWord] = useState('string');//TODO: get word, store string value as "word" or something
@@ -59,3 +61,5 @@ function App() {
 }
 
 export default App;
+
+
