@@ -8,6 +8,8 @@ import { ADD_WORD } from '../utils/mutations';
 const Word = () => {
     const wordToGuess = useQuery(QUERY_WORD);
 
+    const wordList = useQuery(QUERY_WORDS);
+
     const [addWord, { error }] = useMutation(ADD_WORD);
 
     const addNewWord = async (newWord) => {
@@ -20,7 +22,7 @@ const Word = () => {
         }
     };
 
-    return (wordToGuess, addNewWord);
+    return (wordToGuess, wordList, addNewWord);
 };
 
 export default Word;
