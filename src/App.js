@@ -39,7 +39,7 @@ function App() {
 
 
   return (
-    <div className='text-white bg-gradient-to-tl from-black to-gray-500 h-screen'>
+    <div className='text-white bg-gradient-to-tl from-black to-gray-500 h-screen w-screen'>
       <Nav />
 
       {submittedRowArray.length > 0 ? (

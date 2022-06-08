@@ -14,7 +14,7 @@ const LetterBox = ({ letterArray, typedLetter, isSubmitted, boxIndex }) => {
     }
 
     return (
-        <div className={`h-[100px] w-[100px] border-4 border-[#0DE2FF] text-6xl font-bold flex justify-center items-center ${bgColor}`}>
+        <div className={`md:h-[100px] md:w-[100px] h-[50px] w-[50px] border-4 border-[#0DE2FF] md:text-6xl text-xl font-bold flex justify-center items-center ${bgColor}`}>
             {typedLetter}
         </div >
     )
