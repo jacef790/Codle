@@ -1,4 +1,5 @@
 import Keyboard from './components/Keyboard'
+import RowForGuessing from './components/RowForGuessing'
 import './App.css';
 import { useState } from 'react';
 
@@ -7,36 +8,49 @@ function App() {
 
   const [word, setWord] = useState('string');//TODO: get word, store string value as "word" or something
 
-  //reset after submitting, only as long as the word
   const [typedLetterArray, setTypedLetterArray] = useState([]);
 
-  //"0" is 1 row, I'd like to use this number for array index
-  const [rowNumber, setRowNumber] = useState(0);
+  const [submittedRowArray, setSubmittedRowArray] = useState([]);
 
   const keyboardButtonPressed = (buttonValue) => {
 
-    console.log(buttonValue)
+    console.log(buttonValue);
 
     if (buttonValue === 'Delete') {
 
       setTypedLetterArray(typedLetterArray.slice(0, -1));
-      //update row by rowNumber
 
     } else if (buttonValue === 'Enter' && typedLetterArray.length === word.length) {
-      setRowNumber(rowNumber + 1);
-      //add row to be rendered
+      setSubmittedRowArray(submittedRowArray.concat(typedLetterArray.join('')));
+      setTypedLetterArray([]);
 
-      //change last row to "isSubmitted" true
     } else if (typedLetterArray.length === word.length) {
       return;
     } else {
       setTypedLetterArray(typedLetterArray.concat(buttonValue.toUpperCase()))
-      //update row by rowNumber
     }
+
+    console.log(typedLetterArray);
   }
 
+
+
   return (
-    <div>
+    <div className='text-white'>
+
+
+      {submittedRowArray.length > 0 ? (
+        submittedRowArray.map(
+          function (string, i) {
+            return <RowForGuessing word={word} typedLetters={string.split('')} isSubmitted={true} />
+          }
+        )
+      ) :
+        (
+          <div></div>
+        )}
+
+      <RowForGuessing word={word} typedLetters={typedLetterArray} isSubmitted={false} />
 
       <Keyboard buttonCallback={keyboardButtonPressed} /> Keyboard
     </div>

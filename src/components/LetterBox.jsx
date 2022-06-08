@@ -14,7 +14,7 @@ const LetterBox = ({ letterArray, typedLetter, isSubmitted, boxIndex }) => {
     }
 
     return (
-        <div class={`border-2 w-12 h-12 ${bgColor}`}>
+        <div className={`border-2 w-12 h-12 ${bgColor}`}>
             {typedLetter}
         </div >
     )
