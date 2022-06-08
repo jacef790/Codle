@@ -10,10 +10,10 @@ const RowForGuessing = ({ word, typedLetters, isSubmitted }) => {
     let letterArray = upperWord.split('');
 
     return (
-        <div>
+        <div className='flex justify-center'>
             {letterArray.map((el, i) => {
                 return (
-                    <div className="flex flex-col">
+                    <div className="flex justify-center items-center">
                         <LetterBox letterArray={letterArray} typedLetter={typedLetters[i]} isSubmitted={isSubmitted} boxIndex={i} />
                     </div>
                 )
