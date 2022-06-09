@@ -13,7 +13,7 @@ const AddComment = ({ word }) => {
         event.preventDefault();
         console.log('buttonpressed')
         console.log(textField)
-        //TODO add textField to comments on word 
+        //TODO add textField to comments on word, generating new comment
     }
 
     return (
