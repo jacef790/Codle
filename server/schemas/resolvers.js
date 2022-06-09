@@ -1,6 +1,4 @@
-const Word = require('../models');
-const Account = require('../models');
-const Comment = require('../models');
+const { Account, Comment, Word } = require('../models');
 
 const resolvers = {
     Query: {
@@ -16,11 +14,16 @@ const resolvers = {
         account: async() => {
             return Account.findOne({ username: username });
         },
+        word: async () => {
+            num = Math.floor(Math.random() * 101);
+
+            return Word.findOne({ num });
+        },
     },
 
     Mutation: {
-        addWord: async (parent, { word }) => {
-            return Words.create({ word });
+        addWord: async (parent, { newWord }) => {
+            return Word.create({ newWord });
         },
         addAccount: async (parent, { username }) => {
             return Account.create({ username });

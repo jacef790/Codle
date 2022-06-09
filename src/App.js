@@ -3,8 +3,11 @@ import Highscore from './components/Highscore'
 import Comments from './components/Comments'
 import AddComment from './components/AddComment'
 import RowForGuessing from './components/RowForGuessing'
+import Nav from './components/Nav';
 import './App.css';
 import { useState } from 'react';
+
+
 
 
 function App() {
@@ -44,8 +47,8 @@ function App() {
 
 
   return (
-    <div className='text-white'>
-
+    <div className='text-white bg-gradient-to-tl from-black to-gray-500 h-screen w-screen'>
+      <Nav />
 
       {submittedRowArray.length > 0 ? (
         submittedRowArray.map(
@@ -73,7 +76,7 @@ function App() {
 
           <Comments word={word} />
 
-          <AddForm word={word} />
+          <AddComment word={word} />
         </div>
       )
       }
@@ -82,3 +85,5 @@ function App() {
 }
 
 export default App;
+
+

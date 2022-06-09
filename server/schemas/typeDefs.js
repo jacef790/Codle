@@ -14,6 +14,7 @@ const typeDefs = gql`
     }
 
     type Word {
+        _id: ID!
       charcters: String
       highScore: Int
       highScoreName: String
@@ -25,10 +26,11 @@ const typeDefs = gql`
         accounts: [Account]!
         comments: [Comment]!
         account(username: String): Account
+        word(_id: num): Word
     }
 
     type Mutation {
-        addWord(word: String): Word
+        addWord(newWord: String): Word
         addAccount(username: String): Account
         addComment(word: String, comment: String): Comment
         removeComment(word: String, comment: String): Comment

@@ -7,14 +7,14 @@ const LetterBox = ({ letterArray, typedLetter, isSubmitted, boxIndex }) => {
 
     if (isSubmitted) {
         if (letterArray[boxIndex] === typedLetter) {
-            bgColor = 'bg-green-400'
+            bgColor = 'bg-[#43ed36]'
         } else if (letterArray.includes(typedLetter)) {
-            bgColor = 'bg-yellow-400'
-        }
+            bgColor = 'bg-[#FFAD00]'
+        } 
     }
 
     return (
-        <div className={`border-2 w-12 h-12 ${bgColor}`}>
+        <div className={`md:h-[100px] md:w-[100px] h-[50px] w-[50px] border-4 border-[#0DE2FF] md:text-6xl text-xl font-bold flex justify-center items-center ${bgColor}`}>
             {typedLetter}
         </div >
     )
