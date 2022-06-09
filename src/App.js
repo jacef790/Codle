@@ -1,7 +1,7 @@
 import Keyboard from './components/Keyboard'
 import Highscore from './components/Highscore'
-// import Comments from './components/Comments'
-// import AddComment from './components/AddComment'
+import Comments from './components/Comments'
+import AddComment from './components/AddComment'
 import RowForGuessing from './components/RowForGuessing'
 import Nav from './components/Nav';
 import './App.css';
@@ -14,7 +14,7 @@ function App() {
 
   const [word, setWord] = useState('string');//TODO: get word, store string value as "word" or something
 
-  const [gameWin, setGameWin] = useState([false]);
+  const [gameWin, setGameWin] = useState(false);
 
   const [typedLetterArray, setTypedLetterArray] = useState([]);
 
@@ -29,8 +29,10 @@ function App() {
       setTypedLetterArray(typedLetterArray.slice(0, -1));
 
     } else if (buttonValue === 'Enter' && typedLetterArray.length === word.length) {
-      if (typedLetterArray.join('') === word) {
+      console.log(typedLetterArray.join(''));
+      if (typedLetterArray.join('') === word.toUpperCase()) {
         setGameWin(true);
+        return;
       }
       setSubmittedRowArray(submittedRowArray.concat(typedLetterArray.join('')));
       setTypedLetterArray([]);
@@ -74,9 +76,9 @@ function App() {
           {/* these props should be word object, not the word string used for the rest of the game */}
           <Highscore word={word} />
 
-          {/* <Comments word={word} />
+          <Comments word={word} />
 
-          <AddComment word={word} /> */}
+          <AddComment word={word} />
         </div>
       )
       }

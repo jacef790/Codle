@@ -11,6 +11,7 @@ const AddComment = ({ word }) => {
 
     function handleSubmit(event) {
         event.preventDefault();
+        console.log('buttonpressed')
         console.log(textField)
         //TODO add textField to comments on word 
     }
@@ -21,7 +22,7 @@ const AddComment = ({ word }) => {
             <form onSubmit={handleSubmit}>
                 <label>
                     Name:
-                    <input type="text" value={textField} onChange={handleChange} />
+                    <input className='text-black' type="text" value={textField} onChange={handleChange} />
                 </label>
                 <input type="submit" value="Add Comment" />
             </form>

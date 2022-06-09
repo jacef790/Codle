@@ -14,11 +14,12 @@ const Comments = ({ word }) => {
         <div>
 
             {wordComments.map((comment) => {
-
-                <div>
-                    <div>{comment.account}</div>
-                    <div>{comment.content}</div>
-                </div>
+                return (
+                    <div>
+                        <div>{comment.account}</div>
+                        <div>{comment.content}</div>
+                    </div>
+                )
             })}
 
         </div >
