@@ -1,7 +1,7 @@
 import Keyboard from './components/Keyboard'
 import Highscore from './components/Highscore'
-import Comments from './components/Comments'
-import AddComment from './components/AddComment'
+// import Comments from './components/Comments'
+// import AddComment from './components/AddComment'
 import RowForGuessing from './components/RowForGuessing'
 import Nav from './components/Nav';
 import './App.css';
@@ -74,9 +74,9 @@ function App() {
           {/* these props should be word object, not the word string used for the rest of the game */}
           <Highscore word={word} />
 
-          <Comments word={word} />
+          {/* <Comments word={word} />
 
-          <AddComment word={word} />
+          <AddComment word={word} /> */}
         </div>
       )
       }

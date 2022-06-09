@@ -2,10 +2,18 @@ import React from "react";
 
 const Comments = ({ word }) => {
 
+    //replace this with actual data, "word.comments", used for testing
+    let wordComments = [
+        {
+            account: 'account1',
+            content: 'JSEAR is the best'
+        }
+    ]
+
     return (
         <div>
 
-            {word.comments.map((comment) => {
+            {wordComments.map((comment) => {
 
                 <div>
                     <div>{comment.account}</div>
