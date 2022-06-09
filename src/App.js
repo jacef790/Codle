@@ -32,6 +32,7 @@ function App() {
       console.log(typedLetterArray.join(''));
       if (typedLetterArray.join('') === word.toUpperCase()) {
         setGameWin(true);
+        //TODO: update highscore and highscore name for the word
         setSubmittedRowArray(submittedRowArray.concat(typedLetterArray.join('')));
         return;
       }
