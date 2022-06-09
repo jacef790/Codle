@@ -37,6 +37,8 @@ function App() {
       setSubmittedRowArray(submittedRowArray.concat(typedLetterArray.join('')));
       setTypedLetterArray([]);
 
+    } else if (buttonValue === 'Enter') {
+      return;
     } else if (typedLetterArray.length === word.length) {
       return;
     } else {
