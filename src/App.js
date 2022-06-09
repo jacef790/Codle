@@ -1,5 +1,6 @@
 import Keyboard from './components/Keyboard'
 import Highscore from './components/Highscore'
+import Comments from './components/Comments'
 import RowForGuessing from './components/RowForGuessing'
 import './App.css';
 import { useState } from 'react';
