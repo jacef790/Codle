@@ -6,7 +6,7 @@ function ViewComments() {
 
     //test data in useState
     const [commentArray, setCommentArray] = useState([
-        { text: 'test comment 1', likes: 5 }, { text: 'test comment 2', likes: 7 }, { text: 'test comment 1', likes: 9 }])
+        { text: 'test comment 1', award: 5 }, { text: 'test comment 2', award: 7 }, { text: 'test comment 1', award: 9 }])
 
     return (
         <div>
@@ -14,7 +14,7 @@ function ViewComments() {
                 function (comment) {
                     return (<div>
                         <p>{comment.text}</p>
-                        <p>likes {comment.likes}</p>
+                        <p>likes {comment.award}</p>
                         <button>Delete Comment</button>
 
                     </div>)

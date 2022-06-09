@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Comments = ({ word }) => {
 
@@ -6,9 +6,20 @@ const Comments = ({ word }) => {
     let wordComments = [
         {
             account: 'account1',
-            content: 'JSEAR is the best'
+            content: 'JSEAR is the best',
+            award: 9
         }
     ]
+
+    const [awarded, setAwarded] = useState(false);
+
+    function addAward() {
+        if (awarded) {
+            return;
+        }
+        setAwarded(true);
+        //TODO: increment comment award by 1
+    }
 
     return (
         <div>
@@ -18,6 +29,7 @@ const Comments = ({ word }) => {
                     <div>
                         <div>{comment.account}</div>
                         <div>{comment.content}</div>
+                        <button onClick={addAward}>Grant your award! Awards: {comment.award}</button>
                     </div>
                 )
             })}
