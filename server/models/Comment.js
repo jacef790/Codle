@@ -7,6 +7,9 @@ const commentSchema = new Schema(
             required: true,
             trim: true
         },
+        award: {
+            type: Number
+        },
         account:
         {
             type: Schema.Types.ObjectId,
