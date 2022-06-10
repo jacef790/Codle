@@ -9,7 +9,7 @@ import ViewComments from './pages/ViewComments';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ViewComments />
+    <Login />
   </React.StrictMode>
 );
 
