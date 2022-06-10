@@ -73,7 +73,7 @@ function App() {
         <div>
           <RowForGuessing word={word} typedLetters={typedLetterArray} isSubmitted={false} />
 
-          <Keyboard buttonCallback={keyboardButtonPressed} /> <p>Keyboard</p>
+          <Keyboard buttonCallback={keyboardButtonPressed} />
         </div>
       ) : (
         <div>
