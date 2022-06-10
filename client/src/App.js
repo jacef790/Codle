@@ -66,13 +66,14 @@ function App() {
         </Routes>
       </Router>
     </ApolloProvider>
+  )
+}
 
 
 
 
 
 
-
-  export default App;
+export default App;
 
 
