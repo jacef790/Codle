@@ -26,7 +26,7 @@ const typeDefs = gql`
         accounts: [Account]!
         comments: [Comment]!
         account(username: String): Account
-        word(_id: num): Word
+        word: Word
     }
 
     type Mutation {

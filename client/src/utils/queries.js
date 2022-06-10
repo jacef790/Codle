@@ -43,9 +43,8 @@ export const QUERY_ACCOUNT = gql`
 `;
 
 export const QUERY_WORD = gql`
-    query word($_id: num) {
-        word(_id: $_id) {
-            _id
+    query word {
+        word {
             characters
             highScore
             highScoreName

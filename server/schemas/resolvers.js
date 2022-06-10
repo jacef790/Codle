@@ -5,17 +5,17 @@ const resolvers = {
         words: async () => {
             return Word.find();
         },
-        accounts: async() => {
+        accounts: async () => {
             return Account.find();
         },
-        comments: async() => {
+        comments: async () => {
             return Comment.find();
         },
-        account: async() => {
+        account: async () => {
             return Account.findOne({ username: username });
         },
         word: async () => {
-            num = Math.floor(Math.random() * 101);
+            let num = Math.floor(Math.random() * 101);
 
             return Word.findOne({ num });
         },
