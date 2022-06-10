@@ -11,6 +11,7 @@ const keyboard = (props) => {
             {keyboardRow.map((key) => {
               return (
                 <button
+                  key={key}
                   className="rounded bg-gray-600 font-bold uppercase text-xl md:text-2xl text-slate-300 md:py-2 p-[5px] md:flex-1"
                   onClick={() => props.buttonCallback(key)}
                 >
