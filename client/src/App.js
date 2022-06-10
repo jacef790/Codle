@@ -9,12 +9,12 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Account from './pages/Account';
-import Comment from './pages/Comment';
-import Login from './pages/Login';
+// import Account from './pages/Account';
+// import Comment from './pages/Comment';
+// import Login from './pages/Login';
 import RunGame from './pages/RunGame';
-import ViewComments from './pages/ViewComments';
-import Word from './pages/Word';
+// import ViewComments from './pages/ViewComments';
+// import Word from './pages/Word';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -47,11 +47,11 @@ function App() {
             path="/"
             element={<RunGame />}
           />
-          <Route
+          {/* <Route
             path="/login"
             element={<Login />}
-          />
-          <Route
+          /> */}
+          {/* <Route
             path="/signup"
             element={<Account />}
           />
@@ -62,7 +62,7 @@ function App() {
           <Route
             path="/word"
             element={<Word />}
-          />
+          /> */}
         </Routes>
       </Router>
     </ApolloProvider>

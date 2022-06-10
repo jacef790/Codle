@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Axios from 'axios'
 import Keyboard from './components/Keyboard'
 import Highscore from './components/Highscore'
 import Comments from './components/Comments'
