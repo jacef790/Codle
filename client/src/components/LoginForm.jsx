@@ -1,6 +1,6 @@
 import React from 'react'
 
-function loginForm() {
+function LoginForm() {
     return (
         <form>
             <div className='innner-form'>
@@ -10,4 +10,4 @@ function loginForm() {
     )
 }
 
-export default loginForm;
+export default LoginForm;

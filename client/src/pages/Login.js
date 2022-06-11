@@ -1,6 +1,6 @@
-// import LoginForm from "./components/LoginForm";
+import LoginForm from "../components/LoginForm";
 import React, { useState } from "react";
-import Axios from 'axios'
+
 
 function Login() {
 
@@ -11,10 +11,10 @@ function Login() {
     const [passwordLogin, setPasswordLogin] = useState('');
 
     const create = () => {
-        Axios.post('http://localhost3000/create', { username: usernameReg, password: passwordReg })
-            .then((response) => {
-                console.log(response);
-            });
+        //     // Axios.post('http://localhost3000/create', { username: usernameReg, password: passwordReg })
+        //     //     .then((response) => {
+        //     //         console.log(response);
+        //     //     });
     };
 
     const login = () => {
