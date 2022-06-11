@@ -4,14 +4,15 @@ import React from "react";
 const keyboard = (props) => {
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col md:pt-10 pt-5 w-screen">
       {keyboardKeys.map((keyboardRow, rowIndex) => {
         return (
-          <div key={rowIndex} className="flex justify-center my-2 space-x-1 m-auto w-[65%]">
+          <div key={rowIndex} className="md:flex justify-center items-center m-auto my-2 space-x-1  md:w-[65%] w-[90%] flex  ">
             {keyboardRow.map((key) => {
               return (
                 <button
-                  className="rounded bg-blue-600 font-bold uppercase text-xl md:text-3xl text-slate-300 py-2 flex-1"
+                  key={key}
+                  className="rounded bg-gray-600 font-bold uppercase text-xl md:text-2xl text-slate-300 md:py-2 p-[5px] md:flex-1"
                   onClick={() => props.buttonCallback(key)}
                 >
                   {key}
@@ -29,7 +30,7 @@ const keyboard = (props) => {
 
 const keyboardKeys = [
   ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
-  ['', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ''],
+  ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
   ['Enter', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Delete'],
 ];
 
