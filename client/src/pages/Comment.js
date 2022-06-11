@@ -9,11 +9,11 @@ const Comment = () => {
     const [addComment, { error }] = useMutation(ADD_COMMENT);
 
     const addNewComment = async (newComment) => {
-        try{
+        try {
             await addComment({
-                variables: {content: newComment},
+                variables: { content: newComment },
             });
-        } catch(err) {
+        } catch (err) {
             console.error(err);
         }
     };
@@ -21,17 +21,17 @@ const Comment = () => {
     const [removeComment] = useMutation(REMOVE_COMMENT);
 
     const commentRemoval = async (commentTarget) => {
-        try{
-            const temp = commentList;
-            const temp2 = temp.filter(temp => temp[i] != commentTarget);
-            commentList = temp2;
+        // try {
+        // const temp = commentList;
+        // const temp2 = temp.filter(temp => temp[i] != commentTarget);
+        // commentList = temp2;
 
-            await removeComment({
-                
-            });
-        } catch(err) {
-            console.error(err);
-        }
+        // await removeComment({
+
+        // });
+        // } catch (err) {
+        //     console.error(err);
+        // }
     };
 
     return (commentList, addNewComment, commentRemoval);

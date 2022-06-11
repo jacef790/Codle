@@ -8,9 +8,9 @@ export function ViewComments() {
     const [commentArray, setCommentArray] = useState([
         { text: 'test comment 1', award: 5 }, { text: 'test comment 2', award: 7 }, { text: 'test comment 1', award: 9 }])
 
-    // function deleteComment() {
-    //     //TODO: delete comment
-    // }
+    function deleteComment() {
+        //     //TODO: delete comment
+    }
 
     return (
         <div className="App bg-gradient-to-tl from-black to-gray-500 h-screen w-screen text-white" >
@@ -25,7 +25,7 @@ export function ViewComments() {
                         <p>{comment.text}</p>
                         <div className='text-sm'>
                             <p>Awarded {comment.award} times</p>
-                            {/* <button className='rounded border-2 text-red-300' onClick={deleteComment}>Delete Comment</button> */}
+                            <button className='rounded border-2 text-red-300' onClick={deleteComment}>Delete Comment</button>
                         </div>
 
                     </div>)

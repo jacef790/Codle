@@ -1,4 +1,4 @@
-// import LoginForm from "./components/LoginForm";
+import LoginForm from "../components/LoginForm";
 import React, { useState } from "react";
 
 
@@ -10,16 +10,16 @@ function Login() {
     const [usernameLogin, setUsernameLogin] = useState('');
     const [passwordLogin, setPasswordLogin] = useState('');
 
-    // const create = () => {
-    //     // Axios.post('http://localhost3000/create', { username: usernameReg, password: passwordReg })
-    //     //     .then((response) => {
-    //     //         console.log(response);
-    //     //     });
-    // };
+    const create = () => {
+        //     // Axios.post('http://localhost3000/create', { username: usernameReg, password: passwordReg })
+        //     //     .then((response) => {
+        //     //         console.log(response);
+        //     //     });
+    };
 
-    // const login = () => {
+    const login = () => {
 
-    // };
+    };
 
     return (
         <div className="bg-gradient-to-tl from-black to-gray-500 h-screen w-screen text-white">
@@ -45,7 +45,7 @@ function Login() {
                     </div>
                 </div>
 
-                {/* <button className='mb-4 rounded bg-gray-600 font-bold text-md md:text-2xl text-slate-300 md:py-2 p-[5px] md:flex-1' onClick={create}>Create!</button> */}
+                <button className='mb-4 rounded bg-gray-600 font-bold text-md md:text-2xl text-slate-300 md:py-2 p-[5px] md:flex-1' onClick={create}>Create!</button>
 
             </div>
 
@@ -62,7 +62,7 @@ function Login() {
                     }}
                     />
                 </div>
-                {/* <button className='mb-4 rounded bg-gray-600 font-bold text-md md:text-2xl text-slate-300 md:py-2 p-[5px] md:flex-1' onClick={login}>Login!</button> */}
+                <button className='mb-4 rounded bg-gray-600 font-bold text-md md:text-2xl text-slate-300 md:py-2 p-[5px] md:flex-1' onClick={login}>Login!</button>
             </div>
         </div>
     );

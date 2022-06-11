@@ -2,16 +2,16 @@ import React from 'react';
 import * as ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-// import Login from './pages/Login';
-// import ViewComments from './pages/ViewComments';
+import Login from './pages/Login';
+import ViewComments from './pages/ViewComments';
 
 
 ReactDOM.render(<>
-  {/* // <React.StrictMode> */}
-  {/* <ViewComments /> */}
-  < App />
-  {/* <Login /> */}
-  {/* // </React.StrictMode> */}
+  <React.StrictMode>
+
+    < App />
+
+  </React.StrictMode>
 
 </>, document.getElementById('root'));
 

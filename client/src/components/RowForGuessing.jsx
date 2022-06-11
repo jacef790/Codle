@@ -13,7 +13,7 @@ const RowForGuessing = ({ word, typedLetters, isSubmitted }) => {
         <div className='flex justify-center pt-5'>
             {letterArray.map((el, i) => {
                 return (
-                    <div className="flex justify-center items-center">
+                    <div key={i} className="flex justify-center items-center">
                         <LetterBox letterArray={letterArray} typedLetter={typedLetters[i]} isSubmitted={isSubmitted} boxIndex={i} />
                     </div>
                 )
