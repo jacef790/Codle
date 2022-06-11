@@ -4,7 +4,6 @@ import Comments from './components/Comments'
 import AddComment from './components/AddComment'
 import RowForGuessing from './components/RowForGuessing'
 import Nav from './components/Nav';
-import './App.css';
 import { useState } from 'react';
 
 
@@ -53,7 +52,7 @@ function App() {
 
 
   return (
-    <div className='text-white bg-gradient-to-tl from-black to-gray-500 h-screen w-screen'>
+    <div className='text-white bg-gradient-to-tl from-black to-gray-500 h-[100%] w-screen min-h-screen'>
       <Nav />
 
       {submittedRowArray.length > 0 ? (
@@ -74,6 +73,8 @@ function App() {
           <RowForGuessing word={word} typedLetters={typedLetterArray} isSubmitted={false} />
 
           <Keyboard buttonCallback={keyboardButtonPressed} />
+
+          {/* <Footer /> */}
         </div>
       ) : (
         <div>
@@ -83,6 +84,10 @@ function App() {
           <Comments word={word} />
 
           <AddComment word={word} />
+
+          
+
+      
         </div>
       )
       }
