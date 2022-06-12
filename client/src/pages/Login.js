@@ -38,14 +38,7 @@ export function Login() {
     const [addAccount, { error, data }] = useMutation(ADD_ACCOUNT);
 
     const Create = async () => {
-        // TODO: add acount to database
-        //store account username in variable
 
-        console.log({
-            "username": "sfefsef",
-            "password": "sfefsef"
-
-        })
 
         try {
             const { data } = await addAccount({
@@ -56,15 +49,12 @@ export function Login() {
             })
         } catch (e) {
             console.error(e);
+            return;
         }
 
         console.log("account added")
 
-
-
-
-
-
+        localStorage.setItem("CodleUsername", JSON.stringify(usernameReg));
         //     // Axios.post('http://localhost3000/create', { username: usernameReg, password: passwordReg })
         //     //     .then((response) => {
         //     //         console.log(response);
