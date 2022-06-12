@@ -1,9 +1,13 @@
 import LoginForm from "../components/LoginForm";
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { gql, useMutation, useQuery } from '@apollo/client';
+import { ADD_ACCOUNT } from "../utils/mutations";
 
 
 export function Login() {
+
+
 
     let navigate = useNavigate;
 
@@ -13,11 +17,51 @@ export function Login() {
     const [usernameLogin, setUsernameLogin] = useState('');
     const [passwordLogin, setPasswordLogin] = useState('');
 
+    function handleCreateUserChange(event) {
+        setUsernameReg(event.target.value)
+    }
+
+    function handleCreatePassChange(event) {
+        setPasswordReg(event.target.value)
+    }
+
+    function handleLogUserChange(event) {
+        setUsernameLogin(event.target.value)
+    }
+
+    function handleLogPassChange(event) {
+        setPasswordLogin(event.target.value)
+    }
+
     const [renderLink, setRenderLink] = useState(false)
 
-    const Create = () => {
+    const [addAccount, { error, data }] = useMutation(ADD_ACCOUNT);
+
+    const Create = async () => {
         // TODO: add acount to database
         //store account username in variable
+
+        console.log({
+            "username": "sfefsef",
+            "password": "sfefsef"
+
+        })
+
+        try {
+            const { data } = await addAccount({
+                variables: {
+                    username: usernameReg,
+                    password: passwordReg
+                }
+            })
+        } catch (e) {
+            console.error(e);
+        }
+
+        console.log("account added")
+
+
+
 
 
 
@@ -47,17 +91,17 @@ export function Login() {
                     <div className='mb-4'>
                         <label className='m-8'>Username</label>
                         <input
+                            className='text-black'
                             type="text"
-                            onChange={(e) => {
-                                setUsernameReg(e.target.value);
-                            }}
+                            onChange={handleCreateUserChange}
+                            value={usernameReg}
                         />
                     </div>
                     <div>
                         <label className='m-8'>Password</label>
-                        <input type="text" onChange={(e) => {
-                            setPasswordReg(e.target.value);
-                        }}
+                        <input type="text"
+                            className='text-black'
+                            value={passwordReg} onChange={handleCreatePassChange}
                         />
                     </div>
                 </div>
@@ -68,15 +112,15 @@ export function Login() {
 
             <div className="login">
                 <div>
-                    <input className='m-4' type="text" placeholder="Username..." onChange={(e) => {
-                        setUsernameLogin(e.target.value);
-                    }}
+                    <input className='m-4 text-black' type="text" placeholder="Username..."
+                        value={usernameLogin}
+                        onChange={handleLogUserChange}
                     />
                 </div>
                 <div>
-                    <input className='m-4' type="password" placeholder="Password..." onChange={(e) => {
-                        setPasswordLogin(e.target.value);
-                    }}
+                    <input className='m-4 text-black' type="password" placeholder="Password..."
+                        value={passwordLogin}
+                        onChange={handleLogPassChange}
                     />
                 </div>
                 <button className='mb-4 rounded bg-gray-600 font-bold text-md md:text-2xl text-slate-300 md:py-2 p-[5px] md:flex-1' onClick={Login}>Login!</button>

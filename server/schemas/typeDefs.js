@@ -31,7 +31,7 @@ const typeDefs = gql`
 
     type Mutation {
         addWord(newWord: String): Word
-        addAccount(username: String): Account
+        addAccount(username: String, password: String): Account
         addComment(word: String, comment: String): Comment
         removeComment(word: String, comment: String): Comment
     }

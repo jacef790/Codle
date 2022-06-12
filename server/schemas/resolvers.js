@@ -25,8 +25,10 @@ const resolvers = {
         addWord: async (parent, { newWord }) => {
             return Word.create({ newWord });
         },
-        addAccount: async (parent, { username }) => {
-            return Account.create({ username });
+        addAccount: async (parent, { username, password }) => {
+            return Account.create({
+                username, password
+            });
         },
         addComment: async (parent, { word, comment }) => {
             return Comment.findOneAndUpdate(
