@@ -15,7 +15,7 @@ const typeDefs = gql`
 
     type Word {
         _id: ID!
-      charcters: String
+      characters: String
       highScore: Int
       highScoreName: String
       comments: [Comment]!

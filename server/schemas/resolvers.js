@@ -15,9 +15,9 @@ const resolvers = {
             return Account.findOne({ username: username });
         },
         word: async () => {
-            let num = Math.floor(Math.random() * 101);
+            let num = Math.floor(Math.random() * 100);
 
-            return Word.findOne({ num });
+            return Word.findOne().skip(num);
         },
     },
 
