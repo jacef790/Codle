@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function ViewComments() {
+export function ViewComments() {
 
     //TODO, get array of comments associated with username
 
@@ -9,7 +9,7 @@ function ViewComments() {
         { text: 'test comment 1', award: 5 }, { text: 'test comment 2', award: 7 }, { text: 'test comment 1', award: 9 }])
 
     function deleteComment() {
-        //TODO: delete comment
+        //     //TODO: delete comment
     }
 
     return (
@@ -37,4 +37,3 @@ function ViewComments() {
 
 }
 
-export default ViewComments;
