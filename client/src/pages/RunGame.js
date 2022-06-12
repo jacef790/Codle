@@ -48,7 +48,7 @@ function RunGame(props) {
     }
 
     return (
-        <div className='text-white bg-gradient-to-tl from-black to-gray-500 h-screen w-screen'>
+        <div className='text-white bg-gradient-to-tl from-black to-gray-500 h-[100]% w-screen min-h-screen'>
             <Nav />
 
             {submittedRowArray.length > 0 ? (
