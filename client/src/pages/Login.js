@@ -1,8 +1,11 @@
 import LoginForm from "../components/LoginForm";
 import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 
-function Login() {
+export function Login() {
+
+    let navigate = useNavigate;
 
     const [usernameReg, setUsernameReg] = useState('');
     const [passwordReg, setPasswordReg] = useState('');
@@ -10,14 +13,28 @@ function Login() {
     const [usernameLogin, setUsernameLogin] = useState('');
     const [passwordLogin, setPasswordLogin] = useState('');
 
-    const create = () => {
+    const [renderLink, setRenderLink] = useState(false)
+
+    const Create = () => {
+        // TODO: add acount to database
+        //store account username in variable
+
+
+
         //     // Axios.post('http://localhost3000/create', { username: usernameReg, password: passwordReg })
         //     //     .then((response) => {
         //     //         console.log(response);
         //     //     });
+
+        setRenderLink(true);
+
     };
 
-    const login = () => {
+    const Login = () => {
+        //TODO: compare password
+        //TODO: store account username in variable
+
+        navigate(`/play`);
 
     };
 
@@ -45,7 +62,7 @@ function Login() {
                     </div>
                 </div>
 
-                <button className='mb-4 rounded bg-gray-600 font-bold text-md md:text-2xl text-slate-300 md:py-2 p-[5px] md:flex-1' onClick={create}>Create!</button>
+                <button className='mb-4 rounded bg-gray-600 font-bold text-md md:text-2xl text-slate-300 md:py-2 p-[5px] md:flex-1' onClick={Create}>Create!</button>
 
             </div>
 
@@ -62,8 +79,17 @@ function Login() {
                     }}
                     />
                 </div>
-                <button className='mb-4 rounded bg-gray-600 font-bold text-md md:text-2xl text-slate-300 md:py-2 p-[5px] md:flex-1' onClick={login}>Login!</button>
+                <button className='mb-4 rounded bg-gray-600 font-bold text-md md:text-2xl text-slate-300 md:py-2 p-[5px] md:flex-1' onClick={Login}>Login!</button>
             </div>
+
+            {renderLink ? (
+                <div>
+                    <Link to="/play">Play Game!</Link>
+                </div>
+            ) : (
+                <div></div>
+            )}
+
         </div>
     );
 
@@ -90,5 +116,3 @@ function Login() {
     //     </div>
     // );
 };
-
-export default Login;

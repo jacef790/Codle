@@ -5,10 +5,13 @@ import Comments from '../components/Comments'
 import AddComment from '../components/AddComment'
 import RowForGuessing from '../components/RowForGuessing'
 import Nav from '../components/Nav';
+import { useNavigate, Link } from "react-router-dom";
 
-function RunGame(props) {
+
+export function RunGame(props) {
 
     const [word, setWord] = useState('string');//TODO: get word, store string value as "word" or something
+
 
 
     const [gameWin, setGameWin] = useState(false);
@@ -51,6 +54,9 @@ function RunGame(props) {
         <div className='text-white bg-gradient-to-tl from-black to-gray-500 h-screen w-screen'>
             <Nav />
 
+            <Link to="/comments">View Your Comments</Link>
+            <button onClick={() => { window.location.reload(false) }}>New Game</button>
+
             {submittedRowArray.length > 0 ? (
                 submittedRowArray.map(
                     function (string, i) {
@@ -85,6 +91,3 @@ function RunGame(props) {
     );
 }
 
-
-
-export default RunGame;

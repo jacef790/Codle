@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 export function ViewComments() {
 
@@ -18,6 +19,8 @@ export function ViewComments() {
             <div className="h-[50px] w-screen text-transparent bg-clip-text bg-gradient-to-br from-[#ff8300] to-[#00d8ff] border-b-4 border-b-indigo-500 flex justify-center items-center text-4xl font-extrabold mb-4">
                 Your Comments
             </div>
+
+            <Link to="/play">New Game</Link>
 
             {commentArray.map(
                 function (comment) {
