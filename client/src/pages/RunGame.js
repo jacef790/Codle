@@ -112,7 +112,7 @@ export function RunGame(props) {
             ) : (
                 <div>
 
-                    <Highscore word={word} />
+                    {/* <Highscore word={word} /> */}
 
                     <Comments word={word} ref={commentsRef} />
 
