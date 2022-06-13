@@ -13,29 +13,18 @@ import { QUERY_WORD } from "../utils/queries";
 
 export function RunGame(props) {
 
-    // const [queryWord, { data }] = useLazyQuery(QUERY_WORD);
+    const [queryWord, { data }] = useLazyQuery(QUERY_WORD);
 
-    // useEffect(() => {
-    //     queryWord({
-    //         fetchPolicy: "no-cache"
-    //     })
-    // }, [])
+    useEffect(() => {
+        queryWord({
+            fetchPolicy: "no-cache"
+        })
+    }, [])
 
     const commentsRef = useRef()
 
     function handleAddComment() {
         commentsRef.current.refetch()
-    }
-
-    const data = {
-        word: {
-            "_id": "62a57c03e9b18397024cf881",
-            "characters": "api",
-            "comments": [],
-            "highScore": null,
-            "highScoreName": null,
-            "__typename": "Word"
-        }
     }
 
     console.log(data);

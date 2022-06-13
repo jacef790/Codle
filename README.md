@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Codle
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Collaborators:
+-Eric Elste
 
-## Available Scripts
+-Jace Feinstein
 
-In the project directory, you can run:
+-Sam Grumbles
 
-### `npm start`
+-Aaron Losey
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+-Rene Vasquez
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Description:
+Our site was designed as a Wordle clone, but with a twist. Wordle for coding. We used
+exclusively coding terms, not all of them though. Our site allows users to log in, save
+scores, and submit their own coding words. This is intended for people who want to
+challenge their coding vocabulary with a fun word game. Users can also leave comments
+after correctly guessing a word explaining the term and giving other helpful advice.
 
-### `npm test`
+## User Story:
+As an intelligent word and coding enthusiast, I want a site for flexing my extreme skills.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Technologies Used:
+-React
 
-### `npm run build`
+-Tailwind
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-GraphQL
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+-Node
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-Express
 
-### `npm run eject`
+-JWT
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+-MongoDB
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-Heroku
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Website Login Page/Game Page:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![Web Picture Login]()
 
-## Learn More
+![Web Picture Game]()
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Link to Deployed:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[Codle](link)
