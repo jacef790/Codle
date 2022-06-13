@@ -41,12 +41,18 @@ export const QUERY_LOGIN = gql`
 `;
 
 export const QUERY_WORD = gql`
-    query word {
-        word {
-            characters
-            highScore
-            highScoreName
-            comments
+query word {
+    word {
+      _id
+      characters
+      comments {
+        account {
+          username
         }
+        content
+      }
+      highScore
+      highScoreName
     }
+  }
 `;

@@ -50,7 +50,9 @@ export function Login() {
     useEffect(() => {
 
         if (data2?.QueryLogin?.username) {
-            navigate('/play')
+            localStorage.setItem("CodleUsername", JSON.stringify(usernameLogin));
+            localStorage.setItem("CodlePassword", JSON.stringify(passwordLogin));
+            navigate('/play');
         }
     }, [data2])
 
@@ -74,12 +76,13 @@ export function Login() {
         console.log("account added")
 
         localStorage.setItem("CodleUsername", JSON.stringify(usernameReg));
+        localStorage.setItem("CodlePassword", JSON.stringify(passwordReg));
         //     // Axios.post('http://localhost3000/create', { username: usernameReg, password: passwordReg })
         //     //     .then((response) => {
         //     //         console.log(response);
         //     //     });
 
-        setRenderLink(true);
+        navigate('/play');
 
     };
 
@@ -90,6 +93,8 @@ export function Login() {
     const login = async () => {
         setUsernameLogin(userNameInputRef.current.value);
         setPasswordLogin(passwordInputRef.current.value);
+
+
 
         // try {
         //     const { data2 } = await QueryLogin({

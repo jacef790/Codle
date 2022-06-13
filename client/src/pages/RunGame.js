@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLazyQuery } from '@apollo/client';
+
 import Keyboard from '../components/Keyboard'
 import Highscore from '../components/Highscore'
 import Comments from '../components/Comments'
@@ -6,13 +8,22 @@ import AddComment from '../components/AddComment'
 import RowForGuessing from '../components/RowForGuessing'
 import Nav from '../components/Nav';
 import { useNavigate, Link } from "react-router-dom";
+import { QUERY_WORD } from "../utils/queries";
 
 
 export function RunGame(props) {
 
-    const [word, setWord] = useState('string');//TODO: get word, store string value as "word" or something
+    const [queryWord, { data }] = useLazyQuery(QUERY_WORD);
 
+    useEffect(() => {
+        queryWord({
+            fetchPolicy: "no-cache"
+        })
+    }, [])
 
+    console.log(data);
+
+    const word = data?.word;
 
     const [gameWin, setGameWin] = useState(false);
 
@@ -28,9 +39,9 @@ export function RunGame(props) {
 
             setTypedLetterArray(typedLetterArray.slice(0, -1));
 
-        } else if (buttonValue === 'Enter' && typedLetterArray.length === word.length) {
+        } else if (buttonValue === 'Enter' && typedLetterArray.length === word.characters.length) {
             console.log(typedLetterArray.join(''));
-            if (typedLetterArray.join('') === word.toUpperCase()) {
+            if (typedLetterArray.join('') === word.characters.toUpperCase()) {
                 setGameWin(true);
                 //TODO: update highscore and highscore name for the word
                 setSubmittedRowArray(submittedRowArray.concat(typedLetterArray.join('')));
@@ -41,13 +52,18 @@ export function RunGame(props) {
 
         } else if (buttonValue === 'Enter') {
             return;
-        } else if (typedLetterArray.length === word.length) {
+        } else if (typedLetterArray.length === word.characters.length) {
             return;
         } else {
             setTypedLetterArray(typedLetterArray.concat(buttonValue.toUpperCase()))
         }
 
         console.log(typedLetterArray);
+    }
+
+
+    if (!word) {
+        return null;
     }
 
     return (
@@ -60,7 +76,7 @@ export function RunGame(props) {
             {submittedRowArray.length > 0 ? (
                 submittedRowArray.map(
                     function (string, i) {
-                        return <RowForGuessing word={word} typedLetters={string.split('')} isSubmitted={true} />
+                        return <RowForGuessing word={word.characters} typedLetters={string.split('')} isSubmitted={true} />
                     }
                 )
             ) :
@@ -72,7 +88,7 @@ export function RunGame(props) {
 
             {!gameWin ? (
                 <div>
-                    <RowForGuessing word={word} typedLetters={typedLetterArray} isSubmitted={false} />
+                    <RowForGuessing word={word.characters} typedLetters={typedLetterArray} isSubmitted={false} />
 
                     <Keyboard buttonCallback={keyboardButtonPressed} />
                 </div>
