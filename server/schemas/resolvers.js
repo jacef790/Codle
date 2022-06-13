@@ -8,8 +8,8 @@ const resolvers = {
         accounts: async () => {
             return Account.find();
         },
-        comments: async () => {
-            return Comment.find();
+        comments: async (parent, { word }) => {
+            return Comment.find({ word: word }).populate('account');
         },
         QueryLogin: async (parent, { username, password }) => {
 
@@ -37,10 +37,22 @@ const resolvers = {
                 username, password
             });
         },
-        addComment: async (parent, { word, comment }) => {
-            return Comment.findOneAndUpdate(
-                { word: word },
-                { $addToSet: { content: comment } },
+        addComment: async (parent, { word, content, account }) => {
+
+            const data = await Comment.create({
+                content,
+                account,
+                word
+            })
+
+            return Word.findByIdAndUpdate(
+                word,
+                {
+                    $addToSet: {
+                        comments: data
+
+                    }
+                },
                 {
                     new: true,
                     runValidators: true,

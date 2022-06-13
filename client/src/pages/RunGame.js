@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useLazyQuery } from '@apollo/client';
 
 import Keyboard from '../components/Keyboard'
@@ -13,13 +13,30 @@ import { QUERY_WORD } from "../utils/queries";
 
 export function RunGame(props) {
 
-    const [queryWord, { data }] = useLazyQuery(QUERY_WORD);
+    // const [queryWord, { data }] = useLazyQuery(QUERY_WORD);
 
-    useEffect(() => {
-        queryWord({
-            fetchPolicy: "no-cache"
-        })
-    }, [])
+    // useEffect(() => {
+    //     queryWord({
+    //         fetchPolicy: "no-cache"
+    //     })
+    // }, [])
+
+    const commentsRef = useRef()
+
+    function handleAddComment() {
+        commentsRef.current.refetch()
+    }
+
+    const data = {
+        word: {
+            "_id": "62a57c03e9b18397024cf881",
+            "characters": "api",
+            "comments": [],
+            "highScore": null,
+            "highScoreName": null,
+            "__typename": "Word"
+        }
+    }
 
     console.log(data);
 
@@ -97,9 +114,9 @@ export function RunGame(props) {
 
                     <Highscore word={word} />
 
-                    <Comments word={word} />
+                    <Comments word={word} ref={commentsRef} />
 
-                    <AddComment word={word} />
+                    <AddComment word={word} onAddComment={handleAddComment} />
                 </div>
             )
             }

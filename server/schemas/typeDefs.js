@@ -5,6 +5,7 @@ const typeDefs = gql`
         username: String
         password: String
         comments: [Comment]!
+        _id: ID!
     }
 
     type Comment {
@@ -24,7 +25,7 @@ const typeDefs = gql`
     type Query {
         words: [Word]!
         accounts: [Account]!
-        comments: [Comment]!
+        comments(word: String): [Comment]!
         QueryLogin(username: String, password: String): Account
         word: Word
     }
@@ -32,7 +33,7 @@ const typeDefs = gql`
     type Mutation {
         addWord(newWord: String): Word
         addAccount(username: String, password: String): Account
-        addComment(word: String, comment: String): Comment
+        addComment(word: String, content: String, account: String): Comment
         removeComment(word: String, comment: String): Comment
     }
 `;

@@ -13,18 +13,17 @@ export const ADD_ACCOUNT = gql`
 mutation AddAccount ($username: String!, $password: String!) {
     addAccount (username: $username, password: $password){
       username
+      _id
     }
   }
 `;
 
 export const ADD_COMMENT = gql`
-    mutation addComment($word: String, $comment: String) {
-        addComment(word: $word, content: $comment) {
+    mutation addComment($word: String!, $content: String!, $account: String!) {
+        addComment(word: $word, content: $content, account: $account) {
             content
-            account
-            word
-        }
     }
+}
 `;
 
 export const REMOVE_COMMENT = gql`

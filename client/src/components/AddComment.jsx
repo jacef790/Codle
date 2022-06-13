@@ -1,9 +1,14 @@
 import React from "react";
 import { useState } from 'react';
+import { useMutation, useQuery } from '@apollo/client'
+import { ADD_COMMENT } from "../utils/mutations";
 
-const AddComment = ({ word }) => {
+
+const AddComment = ({ word, onAddComment }) => {
 
     const [textField, setTextField] = useState('')
+
+    const [addComment, { error, data }] = useMutation(ADD_COMMENT);
 
     function handleChange(event) {
         setTextField(event.target.value)
@@ -11,9 +16,22 @@ const AddComment = ({ word }) => {
 
     function handleSubmit(event) {
         event.preventDefault();
-        console.log('buttonpressed')
-        console.log(textField)
-        //TODO add textField to comments on word, generating new comment
+        try {
+            const { data } = addComment({
+                variables: {
+                    content: textField,
+                    account: JSON.parse(localStorage.getItem('Codleid')),
+                    word: word._id
+                }
+            })
+            onAddComment();
+        } catch (e) {
+            console.error(e);
+            return;
+        }
+
+
+
     }
 
     return (

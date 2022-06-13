@@ -52,6 +52,7 @@ export function Login() {
         if (data2?.QueryLogin?.username) {
             localStorage.setItem("CodleUsername", JSON.stringify(usernameLogin));
             localStorage.setItem("CodlePassword", JSON.stringify(passwordLogin));
+            localStorage.setItem("Codleid", JSON.stringify(data2.QueryLogin._id));
             navigate('/play');
         }
     }, [data2])
@@ -68,6 +69,12 @@ export function Login() {
                     password: passwordReg
                 }
             })
+
+            console.log(data);
+
+            localStorage.setItem("CodleUsername", JSON.stringify(usernameReg));
+            localStorage.setItem("CodlePassword", JSON.stringify(passwordReg));
+            localStorage.setItem("Codleid", JSON.stringify(data.addAccount._id));
         } catch (e) {
             console.error(e);
             return;
@@ -75,8 +82,6 @@ export function Login() {
 
         console.log("account added")
 
-        localStorage.setItem("CodleUsername", JSON.stringify(usernameReg));
-        localStorage.setItem("CodlePassword", JSON.stringify(passwordReg));
         //     // Axios.post('http://localhost3000/create', { username: usernameReg, password: passwordReg })
         //     //     .then((response) => {
         //     //         console.log(response);
