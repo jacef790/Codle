@@ -11,8 +11,15 @@ const resolvers = {
         comments: async () => {
             return Comment.find();
         },
-        account: async () => {
-            return Account.findOne({ username: username });
+        QueryLogin: async (parent, { username, password }) => {
+
+            const account = await Account.findOne({ username }).exec()
+
+            if (account && await account.isCorrectPassword(password)) {
+                return account;
+            } else {
+                return null;
+            };
         },
         word: async () => {
             let num = Math.floor(Math.random() * 100);

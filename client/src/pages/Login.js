@@ -1,15 +1,15 @@
 import LoginForm from "../components/LoginForm";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { gql, useMutation, useQuery } from '@apollo/client';
 import { ADD_ACCOUNT } from "../utils/mutations";
+import { QUERY_LOGIN } from "../utils/queries";
 
 
 export function Login() {
 
 
-
-    let navigate = useNavigate;
+    let navigate = useNavigate();
 
     const [usernameReg, setUsernameReg] = useState('');
     const [passwordReg, setPasswordReg] = useState('');
@@ -25,17 +25,36 @@ export function Login() {
         setPasswordReg(event.target.value)
     }
 
-    function handleLogUserChange(event) {
-        setUsernameLogin(event.target.value)
-    }
+    // function handleLogUserChange(event) {
+    //     setUsernameLogin(event.target.value)
+    // }
 
-    function handleLogPassChange(event) {
-        setPasswordLogin(event.target.value)
-    }
+    // function handleLogPassChange(event) {
+    //     setPasswordLogin(event.target.value)
+    // }
 
     const [renderLink, setRenderLink] = useState(false)
 
     const [addAccount, { error, data }] = useMutation(ADD_ACCOUNT);
+
+    // debugger;
+    const { data: data2 } = useQuery(QUERY_LOGIN, {
+        variables: {
+            username: usernameLogin,
+            password: passwordLogin
+        },
+        skip: !usernameLogin,
+        fetchPolicy: "no-cache"
+    });
+
+    useEffect(() => {
+
+        if (data2?.QueryLogin?.username) {
+            navigate('/play')
+        }
+    }, [data2])
+
+
 
     const Create = async () => {
 
@@ -64,11 +83,31 @@ export function Login() {
 
     };
 
-    const Login = () => {
+    const userNameInputRef = useRef()
+    const passwordInputRef = useRef()
+
+
+    const login = async () => {
+        setUsernameLogin(userNameInputRef.current.value);
+        setPasswordLogin(passwordInputRef.current.value);
+
+        // try {
+        //     const { data2 } = await QueryLogin({
+        //         variables: {
+        //             username: usernameLogin,
+        //             password: passwordLogin
+        //         }
+        //     });
+        // } catch (e) {
+        //     console.error(e);
+        //     return;
+        // }
+
+
         //TODO: compare password
         //TODO: store account username in variable
 
-        navigate(`/play`);
+        // navigate(`/play`);
 
     };
 
@@ -102,18 +141,21 @@ export function Login() {
 
             <div className="login">
                 <div>
-                    <input className='m-4 text-black' type="text" placeholder="Username..."
-                        value={usernameLogin}
-                        onChange={handleLogUserChange}
+                    <input
+                        ref={userNameInputRef}
+                        className='m-4 text-black' type="text" placeholder="Username..."
+                    // value={usernameLogin}
+                    // onChange={handleLogUserChange}
                     />
                 </div>
                 <div>
                     <input className='m-4 text-black' type="password" placeholder="Password..."
-                        value={passwordLogin}
-                        onChange={handleLogPassChange}
+                        ref={passwordInputRef}
+                    // value={passwordLogin}
+                    // onChange={handleLogPassChange}
                     />
                 </div>
-                <button className='mb-4 rounded bg-gray-600 font-bold text-md md:text-2xl text-slate-300 md:py-2 p-[5px] md:flex-1' onClick={Login}>Login!</button>
+                <button className='mb-4 rounded bg-gray-600 font-bold text-md md:text-2xl text-slate-300 md:py-2 p-[5px] md:flex-1' onClick={login}>Login!</button>
             </div>
 
             {renderLink ? (

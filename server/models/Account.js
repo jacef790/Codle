@@ -30,7 +30,10 @@ accountSchema.pre('save', async function (next) {
 });
 
 accountSchema.methods.isCorrectPassword = async function (password) {
-    return bcrypt.compare(password, this.password);
+
+    const isCorrect = await bcrypt.compare(password, this.password);
+
+    return isCorrect;
 };
 
 const Account = model('Account', accountSchema);

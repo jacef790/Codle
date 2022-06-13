@@ -25,7 +25,7 @@ const typeDefs = gql`
         words: [Word]!
         accounts: [Account]!
         comments: [Comment]!
-        account(username: String): Account
+        QueryLogin(username: String, password: String): Account
         word: Word
     }
 
