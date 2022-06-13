@@ -23,17 +23,22 @@ const typeDefs = gql`
       comments: [Comment]!
     }
 
+    type AuthData {
+        account: Account
+        token: String
+    }
+
     type Query {
         words: [Word]!
         accounts: [Account]!
         comments(word: String): [Comment]!
-        QueryLogin(username: String, password: String): Account
+        QueryLogin(username: String, password: String): AuthData
         word: Word
     }
 
     type Mutation {
         addWord(newWord: String): Word
-        addAccount(username: String, password: String): Account
+        addAccount(username: String, password: String): AuthData
         addComment(word: String, content: String, account: String): Comment
         removeComment(word: String, comment: String): Comment
     }

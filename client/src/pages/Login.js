@@ -49,10 +49,11 @@ export function Login() {
 
     useEffect(() => {
 
-        if (data2?.QueryLogin?.username) {
+        if (data2?.QueryLogin?.token) {
             localStorage.setItem("CodleUsername", JSON.stringify(usernameLogin));
             localStorage.setItem("CodlePassword", JSON.stringify(passwordLogin));
-            localStorage.setItem("Codleid", JSON.stringify(data2.QueryLogin._id));
+            localStorage.setItem("Codleid", JSON.stringify(data2.QueryLogin.account._id));
+            localStorage.setItem("CodleToken", JSON.stringify(data2.QueryLogin.token));
             navigate('/play');
         }
     }, [data2])
@@ -74,7 +75,8 @@ export function Login() {
 
             localStorage.setItem("CodleUsername", JSON.stringify(usernameReg));
             localStorage.setItem("CodlePassword", JSON.stringify(passwordReg));
-            localStorage.setItem("Codleid", JSON.stringify(data.addAccount._id));
+            localStorage.setItem("Codleid", JSON.stringify(data.addAccount.account._id));
+            localStorage.setItem("CodleToken", JSON.stringify(data.addAccount.token));
         } catch (e) {
             console.error(e);
             return;

@@ -12,10 +12,13 @@ export const ADD_WORD = gql`
 export const ADD_ACCOUNT = gql`
 mutation AddAccount ($username: String!, $password: String!) {
     addAccount (username: $username, password: $password){
-      username
-      _id
-    }
+        account{
+            username
+            _id
+            }
+            token
   }
+}
 `;
 
 export const ADD_COMMENT = gql`

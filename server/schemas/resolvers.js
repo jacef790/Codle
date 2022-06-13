@@ -1,4 +1,7 @@
+const { ApolloServer, AuthenticationError } = require('apollo-server-express');
+const { JWT_SECRET } = require('../config/jwt');
 const { Account, Comment, Word } = require('../models');
+const jwt = require('jsonwebtoken')
 
 const resolvers = {
     Query: {
@@ -16,7 +19,15 @@ const resolvers = {
             const account = await Account.findOne({ username }).exec()
 
             if (account && await account.isCorrectPassword(password)) {
-                return account;
+
+                let data = {
+                    time: Date.now(),
+                    accountId: account._id,
+                }
+
+                const token = jwt.sign(data, JWT_SECRET);
+
+                return { account, token };
             } else {
                 return null;
             };
@@ -33,15 +44,27 @@ const resolvers = {
             return Word.create({ newWord });
         },
         addAccount: async (parent, { username, password }) => {
-            return Account.create({
+
+            const account = await Account.create({
                 username, password
             });
+
+            let data = {
+                time: Date.now(),
+                accountId: account._id,
+            }
+
+            const token = jwt.sign(data, JWT_SECRET);
+
+            return { account, token };
+
         },
-        addComment: async (parent, { word, content, account }) => {
+        addComment: async (parent, { word, content }, context) => {
+            if (!context.accountId) throw new AuthenticationError('invalid token');
 
             const data = await Comment.create({
                 content,
-                account,
+                account: context.accountId,
                 word
             })
 
@@ -59,8 +82,9 @@ const resolvers = {
                 }
             );
         },
-        removeComment: async (parent, { word, comment }) => {
+        removeComment: async (parent, { word, comment }, context) => {
 
+            if (!context.accountId) throw new AuthenticationError('invalid token');
 
             await Word.findByIdAndUpdate(
                 word,

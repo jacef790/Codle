@@ -37,8 +37,11 @@ export const QUERY_WORDS = gql`
 export const QUERY_LOGIN = gql`
     query QueryLogin ($username: String!, $password: String!){
         QueryLogin (username: $username, password: $password) {
+            account{
             username
             _id
+            }
+            token
       }
     }
 `;
