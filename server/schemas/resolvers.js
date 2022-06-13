@@ -60,11 +60,27 @@ const resolvers = {
             );
         },
         removeComment: async (parent, { word, comment }) => {
-            return Comment.findOneAndUpdate(
-                { word: word },
-                { $pull: { content: comment } },
-                { new: true }
+
+
+            await Word.findByIdAndUpdate(
+                word,
+                {
+                    $pull: {
+                        comments: comment
+
+                    }
+                },
+                {
+                    new: true,
+                    runValidators: true,
+                }
             );
+
+            await Comment.deleteOne({
+                _id: comment
+            })
+
+            return { _id: comment }
         },
     },
 };

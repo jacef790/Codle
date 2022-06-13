@@ -28,10 +28,8 @@ export const ADD_COMMENT = gql`
 
 export const REMOVE_COMMENT = gql`
     mutation removeComment($word: String, $comment: String) {
-        removeComment(word: $word, content: $comment) {
+        removeComment(word: $word, comment: $comment) {
             content
-            account
-            word
         }
     }
 `;

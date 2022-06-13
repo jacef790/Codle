@@ -51,10 +51,10 @@ function App() {
             path="/"
             element={<Login />}
           />
-          <Route
+          {/* <Route
             path='/comments'
             element={<ViewComments />}
-          />
+          /> */}
           {/* <Route
             path="/signup"
             element={<Account />}

@@ -17,6 +17,7 @@ export const QUERY_COMMENTS = gql`
             account {
                 username
             }
+            _id
         }
     }
 `;

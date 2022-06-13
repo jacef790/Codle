@@ -87,7 +87,7 @@ export function RunGame(props) {
         <div className='text-white bg-gradient-to-tl from-black to-gray-500 h-[100%] w-screen min-h-screen'>
             <Nav />
 
-            <Link to="/comments">View Your Comments</Link>
+            {/* <Link to="/comments">View Your Comments</Link> */}
             <button onClick={() => { window.location.reload(false) }}>New Game</button>
 
             {submittedRowArray.length > 0 ? (

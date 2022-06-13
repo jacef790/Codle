@@ -12,6 +12,7 @@ const typeDefs = gql`
         content: String
         account: Account
         word: Word
+        _id: ID!
     }
 
     type Word {
