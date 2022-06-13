@@ -10,30 +10,29 @@ export const ADD_WORD = gql`
 `;
 
 export const ADD_ACCOUNT = gql`
-    mutation addAccount($username: String) {
-        addAccount(username: $username) {
+mutation AddAccount ($username: String!, $password: String!) {
+    addAccount (username: $username, password: $password){
+        account{
             username
-            password
-        }
-    }
+            _id
+            }
+            token
+  }
+}
 `;
 
 export const ADD_COMMENT = gql`
-    mutation addComment($word: String, $comment: String) {
-        addComment(word: $word, content: $comment) {
+    mutation addComment($word: String!, $content: String!, $account: String!) {
+        addComment(word: $word, content: $content, account: $account) {
             content
-            account
-            word
-        }
     }
+}
 `;
 
 export const REMOVE_COMMENT = gql`
     mutation removeComment($word: String, $comment: String) {
-        removeComment(word: $word, content: $comment) {
+        removeComment(word: $word, comment: $comment) {
             content
-            account
-            word
         }
     }
 `;

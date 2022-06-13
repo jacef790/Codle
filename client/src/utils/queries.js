@@ -11,11 +11,13 @@ export const QUERY_ACCOUNTS = gql`
 `;
 
 export const QUERY_COMMENTS = gql`
-    query comments {
-        comment {
+    query comments ($word: String!){
+        comments (word: $word) {
             content
-            account
-            word
+            account {
+                username
+            }
+            _id
         }
     }
 `;
@@ -32,23 +34,31 @@ export const QUERY_WORDS = gql`
     }
 `;
 
-export const QUERY_ACCOUNT = gql`
-    query account($username: String) {
-        account(username: $username) {
+export const QUERY_LOGIN = gql`
+    query QueryLogin ($username: String!, $password: String!){
+        QueryLogin (username: $username, password: $password) {
+            account{
             username
-            password
-            comments
-        }
+            _id
+            }
+            token
+      }
     }
 `;
 
 export const QUERY_WORD = gql`
-    query word {
-        word {
-            characters
-            highScore
-            highScoreName
-            comments
+query word {
+    word {
+      _id
+      characters
+      comments {
+        account {
+          username
         }
+        content
+      }
+      highScore
+      highScoreName
     }
+  }
 `;

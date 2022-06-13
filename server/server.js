@@ -1,15 +1,31 @@
 const express = require('express');
-const { ApolloServer } = require('apollo-server-express');
+const { ApolloServer, AuthenticationError } = require('apollo-server-express');
 const path = require('path');
+const jwt = require('jsonwebtoken')
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
+const { JWT_SECRET } = require('./config/jwt');
+const { Account } = require('./models');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 const server = new ApolloServer({
     typeDefs,
     resolvers,
+
+    context: ({ req }) => {
+
+        try {
+            token = /^Bearer (.*)$/.exec(req.headers.authorization)[1]
+            const decoded = jwt.verify(token, JWT_SECRET);
+            return { accountId: decoded.accountId }
+        } catch (err) {
+            console.error(err);
+        }
+
+        return {};
+    },
 });
 
 app.use(express.urlencoded({ extended: false }));

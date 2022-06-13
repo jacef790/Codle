@@ -11,9 +11,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Account from './pages/Account';
 import Comment from './pages/Comment';
-import Login from './pages/Login';
-import RunGame from './pages/RunGame';
-import ViewComments from './pages/ViewComments';
+import { Login } from './pages/Login';
+import { RunGame } from './pages/RunGame';
+import { ViewComments } from './pages/ViewComments';
 import Word from './pages/Word';
 
 const httpLink = createHttpLink({
@@ -22,7 +22,7 @@ const httpLink = createHttpLink({
 
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
-  const token = localStorage.getItem('id_token');
+  const token = JSON.parse(localStorage.getItem('CodleToken'));
   // return the headers to the context so httpLink can read them
   return {
     headers: {
@@ -44,25 +44,29 @@ function App() {
       <Router>
         <Routes>
           <Route
-            path="/"
+            path="/play"
             element={<RunGame />}
           />
           <Route
-            path="/login"
+            path="/"
             element={<Login />}
           />
-          <Route
+          {/* <Route
+            path='/comments'
+            element={<ViewComments />}
+          /> */}
+          {/* <Route
             path="/signup"
             element={<Account />}
-          />
-          <Route
+          /> */}
+          {/* <Route
             path="/comment"
             element={<Comment />}
-          />
-          <Route
+          /> */}
+          {/* <Route
             path="/word"
             element={<Word />}
-          />
+          /> */}
         </Routes>
       </Router>
     </ApolloProvider>

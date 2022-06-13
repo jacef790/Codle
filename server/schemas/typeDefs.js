@@ -5,34 +5,41 @@ const typeDefs = gql`
         username: String
         password: String
         comments: [Comment]!
+        _id: ID!
     }
 
     type Comment {
         content: String
         account: Account
         word: Word
+        _id: ID!
     }
 
     type Word {
         _id: ID!
-      charcters: String
+      characters: String
       highScore: Int
       highScoreName: String
       comments: [Comment]!
     }
 
+    type AuthData {
+        account: Account
+        token: String
+    }
+
     type Query {
         words: [Word]!
         accounts: [Account]!
-        comments: [Comment]!
-        account(username: String): Account
+        comments(word: String): [Comment]!
+        QueryLogin(username: String, password: String): AuthData
         word: Word
     }
 
     type Mutation {
         addWord(newWord: String): Word
-        addAccount(username: String): Account
-        addComment(word: String, comment: String): Comment
+        addAccount(username: String, password: String): AuthData
+        addComment(word: String, content: String, account: String): Comment
         removeComment(word: String, comment: String): Comment
     }
 `;

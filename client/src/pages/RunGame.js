@@ -1,15 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { useLazyQuery } from '@apollo/client';
+
 import Keyboard from '../components/Keyboard'
 import Highscore from '../components/Highscore'
 import Comments from '../components/Comments'
 import AddComment from '../components/AddComment'
 import RowForGuessing from '../components/RowForGuessing'
 import Nav from '../components/Nav';
+import { useNavigate, Link } from "react-router-dom";
+import { QUERY_WORD } from "../utils/queries";
 
-function RunGame(props) {
 
-    const [word, setWord] = useState('string');//TODO: get word, store string value as "word" or something
+export function RunGame(props) {
 
+    // const [queryWord, { data }] = useLazyQuery(QUERY_WORD);
+
+    // useEffect(() => {
+    //     queryWord({
+    //         fetchPolicy: "no-cache"
+    //     })
+    // }, [])
+
+    const commentsRef = useRef()
+
+    function handleAddComment() {
+        commentsRef.current.refetch()
+    }
+
+    const data = {
+        word: {
+            "_id": "62a57c03e9b18397024cf881",
+            "characters": "api",
+            "comments": [],
+            "highScore": null,
+            "highScoreName": null,
+            "__typename": "Word"
+        }
+    }
+
+    console.log(data);
+
+    const word = data?.word;
 
     const [gameWin, setGameWin] = useState(false);
 
@@ -25,9 +56,9 @@ function RunGame(props) {
 
             setTypedLetterArray(typedLetterArray.slice(0, -1));
 
-        } else if (buttonValue === 'Enter' && typedLetterArray.length === word.length) {
+        } else if (buttonValue === 'Enter' && typedLetterArray.length === word.characters.length) {
             console.log(typedLetterArray.join(''));
-            if (typedLetterArray.join('') === word.toUpperCase()) {
+            if (typedLetterArray.join('') === word.characters.toUpperCase()) {
                 setGameWin(true);
                 //TODO: update highscore and highscore name for the word
                 setSubmittedRowArray(submittedRowArray.concat(typedLetterArray.join('')));
@@ -38,7 +69,7 @@ function RunGame(props) {
 
         } else if (buttonValue === 'Enter') {
             return;
-        } else if (typedLetterArray.length === word.length) {
+        } else if (typedLetterArray.length === word.characters.length) {
             return;
         } else {
             setTypedLetterArray(typedLetterArray.concat(buttonValue.toUpperCase()))
@@ -47,14 +78,22 @@ function RunGame(props) {
         console.log(typedLetterArray);
     }
 
+
+    if (!word) {
+        return null;
+    }
+
     return (
-        <div className='text-white bg-gradient-to-tl from-black to-gray-500 h-screen w-screen'>
+        <div className='text-white bg-gradient-to-tl from-black to-gray-500 h-[100%] w-screen min-h-screen'>
             <Nav />
+
+            {/* <Link to="/comments">View Your Comments</Link> */}
+            <button onClick={() => { window.location.reload(false) }}>New Game</button>
 
             {submittedRowArray.length > 0 ? (
                 submittedRowArray.map(
                     function (string, i) {
-                        return <RowForGuessing word={word} typedLetters={string.split('')} isSubmitted={true} />
+                        return <RowForGuessing word={word.characters} typedLetters={string.split('')} isSubmitted={true} />
                     }
                 )
             ) :
@@ -66,18 +105,18 @@ function RunGame(props) {
 
             {!gameWin ? (
                 <div>
-                    <RowForGuessing word={word} typedLetters={typedLetterArray} isSubmitted={false} />
+                    <RowForGuessing word={word.characters} typedLetters={typedLetterArray} isSubmitted={false} />
 
                     <Keyboard buttonCallback={keyboardButtonPressed} />
                 </div>
             ) : (
                 <div>
 
-                    <Highscore word={word} />
+                    {/* <Highscore word={word} /> */}
 
-                    <Comments word={word} />
+                    <Comments word={word} ref={commentsRef} />
 
-                    <AddComment word={word} />
+                    <AddComment word={word} onAddComment={handleAddComment} />
                 </div>
             )
             }
@@ -85,6 +124,3 @@ function RunGame(props) {
     );
 }
 
-
-
-export default RunGame;
